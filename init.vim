@@ -1,35 +1,36 @@
 set encoding=utf-8
 set fileformat=unix
 
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
-set autoindent
+set tabstop=4     " number of columns occupied by a tab
+set softtabstop=4 " see multiple spaces as tabstops
+set expandtab     " converts tabs to white space
+set shiftwidth=4  " width for autoindents
+set autoindent    " indent a new line the same amount as the line just typed
 
-set number
-set relativenumber
+set number         " add line numbers
+set relativenumber " show numbers relative to the current line
 
-set wildmode=longest,list
+set wildmode=longest,list " get bash-like tab completions
 set cursorline
-set splitright
-set splitbelow
 set noswapfile
+
+"set cc=80
+set clipboard=unnamedplus   " using system clipboard
+
 
 " Marker based folding in vim files
 autocmd FileType vim setlocal foldmethod=marker
 
 " Plugins {{{
-call plug#begin("~/.vim/plugged")
+call plug#begin("~/.config/nvim/plugged")
  Plug 'neoclide/coc.nvim', {'branch': 'release'} " C/C++ Server
- Plug 'jackguo380/vim-lsp-cxx-highlight' " C/C++ Syntax Linting
- Plug 'preservim/tagbar' " Shows Variables
+ Plug 'jackguo380/vim-lsp-cxx-highlight'         " C/C++ Syntax Linting
 
- Plug 'scrooloose/nerdtree' " Directory Tree
- Plug 'Xuyuanp/nerdtree-git-plugin' " Show Git Status In NERDTree
- Plug 'tiagofumo/vim-nerdtree-syntax-highlight' 
- Plug 'ryanoasis/vim-devicons' " File Icons In NERDTree (Using nerd-fonts)
- Plug 'vim-airline/vim-airline' " File Status
+ Plug 'scrooloose/nerdtree'           " Directory Tree
+ Plug 'Xuyuanp/nerdtree-git-plugin'   " Show Git Status In NERDTree
+ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+ Plug 'ryanoasis/vim-devicons'        " File Icons In NERDTree
+ Plug 'vim-airline/vim-airline'       " File Status
 
  Plug 'scrooloose/nerdcommenter'
  Plug 'SirVer/ultisnips'
@@ -38,15 +39,11 @@ call plug#begin("~/.vim/plugged")
  Plug 'mhinz/vim-startify'
 
  " Color Schemes Plugins
- Plug 'dracula/vim' " dracula
- Plug 'morhetz/gruvbox' " gruvbox
+ Plug 'dracula/vim'                   " dracula
+ Plug 'morhetz/gruvbox'               " gruvbox
  Plug 'rafi/awesome-vim-colorschemes' " jellybeans
 
  call plug#end()
-" }}}
-
-" Tagbar Config {{{
-nmap <F8> :TagbarToggle<CR>
 " }}}
 
 " Nerd Commenter Config {{{
@@ -65,10 +62,6 @@ syntax enable
 colorscheme deep-space
 " }}}
 
-" Syntax Highlight Ares {{{
-autocmd BufRead,BufNewFile *.ares set filetype=ares
-" }}}
-
 " c++ syntax highlighting {{{
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -76,10 +69,6 @@ let g:cpp_class_decl_highlight = 1
 " }}}
 
 " Coc Config {{{
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-"set encoding=utf-8
-
 " TextEdit might fail if hidden is not set.
 set hidden
 
